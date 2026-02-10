@@ -7,7 +7,7 @@ export default function AdminDashboard() {
   const token = localStorage.getItem("token");
 
   const fetchAnalytics = async () => {
-    const res = await axios.get("http://localhost:5000/api/admin/analytics", {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}api/admin/analytics`, {
       headers: {
         Authorization: token,
       },
