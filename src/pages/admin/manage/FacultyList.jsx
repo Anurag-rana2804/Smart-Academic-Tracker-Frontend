@@ -8,7 +8,7 @@ export default function FacultyList() {
   const token = localStorage.getItem("token");
 
   const fetchFaculty = async () => {
-    const res = await axios.get("http://localhost:5000/api/admin/faculty", {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}api/admin/faculty`, {
       headers: { Authorization: token },
     });
 
@@ -21,7 +21,7 @@ export default function FacultyList() {
   const deleteUser = async (id) => {
     if (!window.confirm("Delete faculty?")) return;
 
-    await axios.delete(`http://localhost:5000/api/admin/delete/${id}`, {
+    await axios.delete(`${import.meta.env.VITE_API_URL}api/admin/delete/${id}`, {
       headers: { Authorization: token },
     });
 

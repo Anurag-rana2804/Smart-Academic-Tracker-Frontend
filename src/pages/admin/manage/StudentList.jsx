@@ -8,7 +8,7 @@ export default function StudentList() {
   const token = localStorage.getItem("token");
 
   const fetchStudents = async () => {
-    const res = await axios.get("http://localhost:5000/api/admin/students", {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}api/admin/students`, {
       headers: { Authorization: token },
     });
 
@@ -21,7 +21,7 @@ export default function StudentList() {
   const deleteUser = async (id) => {
     if (!window.confirm("Delete student?")) return;
 
-    await axios.delete(`http://localhost:5000/api/admin/delete/${id}`, {
+    await axios.delete(`${import.meta.env.VITE_API_URL}api/admin/delete/${id}`, {
       headers: { Authorization: token },
     });
 

@@ -17,7 +17,7 @@ export default function CreateFaculty() {
     e.preventDefault();
 
     await axios.post(
-      "http://localhost:5000/api/admin/create-faculty",
+      `${import.meta.env.VITE_API_URL}api/admin/create-faculty`,
       form,
       { headers: { Authorization: token } }
     );

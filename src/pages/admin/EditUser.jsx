@@ -10,7 +10,7 @@ export default function EditUser() {
 
   // Fetch User
   const fetchUser = async () => {
-    const res = await axios.get(`http://localhost:5000/api/admin/user/${id}`, {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}api/admin/user/${id}`, {
       headers: { Authorization: token },
     });
 
@@ -31,7 +31,7 @@ export default function EditUser() {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    await axios.put(`http://localhost:5000/api/admin/update/${id}`, form, {
+    await axios.put(`${import.meta.env.VITE_API_URL}api/admin/update/${id}`, form, {
       headers: { Authorization: token },
     });
 

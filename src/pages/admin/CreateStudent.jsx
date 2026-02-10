@@ -17,7 +17,7 @@ export default function CreateStudent() {
     e.preventDefault();
 
     await axios.post(
-      "http://localhost:5000/api/admin/create-student",
+      `${import.meta.env.VITE_API_URL}api/admin/create-student`,
       form,
       { headers: { Authorization: token } }
     );
