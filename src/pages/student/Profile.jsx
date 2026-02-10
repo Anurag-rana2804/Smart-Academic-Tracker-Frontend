@@ -8,7 +8,7 @@ export default function Profile() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/me", {
+      .get(`${import.meta.env.VITE_API_URL}api/auth/me`, {
         headers: { Authorization: token },
       })
       .then((res) => setUser(res.data));

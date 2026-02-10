@@ -17,7 +17,7 @@ export default function Dashboard() {
   // ================= FETCH SUMMARY =================
   const fetchSummary = async () => {
     const res = await axios.get(
-      "http://localhost:5000/api/performance/summary",
+      `${import.meta.env.VITE_API_URL}api/performance/summary`,
       { headers }
     );
     setSummary(res.data);
@@ -26,7 +26,7 @@ export default function Dashboard() {
   // ================= FETCH LOGGED-IN USER =================
   const fetchUser = async () => {
     const res = await axios.get(
-      "http://localhost:5000/api/auth/me",
+      `${import.meta.env.VITE_API_URL}api/auth/me`,
       { headers }
     );
     setUser(res.data);

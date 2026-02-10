@@ -10,7 +10,7 @@ export default function Results() {
   // ✅ Fetch Student Semester Results
   const fetchResults = async () => {
     const res = await axios.get(
-      "http://localhost:5000/api/results/my",
+      `${import.meta.env.VITE_API_URL}api/results/my`,
       { headers }
     );
 
