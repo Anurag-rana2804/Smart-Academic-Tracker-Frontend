@@ -1,0 +1,62 @@
+import { useState } from "react";
+import axios from "axios";
+
+export default function CreateStudent() {
+  const [form, setForm] = useState({});
+
+  const token = localStorage.getItem("token");
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await axios.post(
+      "http://localhost:5000/api/admin/create-student",
+      form,
+      { headers: { Authorization: token } }
+    );
+
+    alert("Student Created ✅");
+  };
+
+  return (
+    <div className="bg-white p-6 rounded-xl shadow max-w-3xl">
+
+      <h1 className="text-2xl font-bold mb-6">
+        Create Student
+      </h1>
+
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-2 gap-4"
+      >
+
+        <input name="name" placeholder="Name" onChange={handleChange} className="border p-2" />
+        <input name="email" placeholder="Email" onChange={handleChange} className="border p-2" />
+
+        <input name="mobile" placeholder="Mobile" onChange={handleChange} className="border p-2" />
+        <input name="dob" type="date" onChange={handleChange} className="border p-2" />
+
+        <input name="rollNo" placeholder="Roll No" onChange={handleChange} className="border p-2" />
+        <input name="branch" placeholder="Branch" onChange={handleChange} className="border p-2" />
+
+        <input name="fatherName" placeholder="Father Name" onChange={handleChange} className="border p-2" />
+        <input name="motherName" placeholder="Mother Name" onChange={handleChange} className="border p-2" />
+
+        <input name="password" type="password" placeholder="Password" onChange={handleChange} className="border p-2 col-span-2" />
+
+        <button className="bg-blue-600 text-white py-2 rounded col-span-2">
+          Create Student
+        </button>
+
+      </form>
+
+    </div>
+  );
+}
